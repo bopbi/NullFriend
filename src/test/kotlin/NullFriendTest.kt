@@ -25,11 +25,19 @@ class NullFriendTest {
     }
 
     @Test
-    fun testWhenItsNotNull_shouldAssertFalse() {
+    fun testWhenItsNotNull_whenListCointainNull_shouldAssertFalse() {
         val result = false
         whenItsNotNull(listOf(1, null, "")) {
             assertTrue(result)
         }
         assertFalse(result)
+    }
+
+    @Test
+    fun testWhenItsNotNull_whenListNotContainNull_shouldAssertTrue() {
+        val result = true
+        whenItsNotNull(listOf(1, "")) {
+            assertTrue(result)
+        }
     }
 }
